@@ -15,6 +15,12 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+gem 'devise'
+gem 'carrierwave'
+gem 'ffaker'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'jquery-rails'
+
 group :production do
   gem 'pg', '~> 0.11'
 end
