@@ -58,11 +58,4 @@ class Admin::CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
   
-  def authenticate_admin
-    unless current_user.admin?
-      flash[:alert] = "沒有訪問的權限"
-      redirect_to root_path
-    end
-  end
-  
 end
