@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authenticate_admin
   
   before_action :set_category, only: [:update, :destroy]
   
@@ -54,6 +56,13 @@ class Admin::CategoriesController < ApplicationController
   
   def set_category
     @category = Category.find(params[:id])
+  end
+  
+  def authenticate_admin
+    unless current_user.admin?
+      flash[:alert] = "沒有訪問的權限"
+      redirect_to root_path
+    end
   end
   
 end
