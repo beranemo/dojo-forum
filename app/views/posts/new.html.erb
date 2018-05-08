@@ -1,4 +1,13 @@
-<h1>這是新增文章頁面</h1>
+<h1>新增文章</h1>
+<% if @post.errors.any? %>
+  <h3>喔喔，有出錯喔！請檢查看看</h3>
+  <ul>
+    <% @post.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_for @post do |f| %>
   <div class="form-group">
     <%= f.label :title, "文章標題" %>
