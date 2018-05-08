@@ -11,7 +11,9 @@
       </button>
       <%= link_to x, root_path, class: "navbar-brand" %>
       <ul class="pull-left nav navbar-nav">
-        <li><p class="navbar-text">新增文章</p></li>
+        <li>
+          <p class="navbar-text"><%= link_to "新增文章", new_post_path %></p>
+        </li>
       </ul>      
     </div>
 
