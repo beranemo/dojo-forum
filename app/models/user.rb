@@ -7,4 +7,11 @@ class User < ApplicationRecord
     self.role == "admin"
   end
 
+  def to_admin
+    self.update_columns(role: "admin")
+  end
+  
+  def to_normal
+    self.update_columns(role: "normal")
+  end
 end

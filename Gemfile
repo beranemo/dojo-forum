@@ -20,6 +20,8 @@ gem 'carrierwave'
 gem 'ffaker'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
+gem 'font-awesome-rails'
+
 
 group :production do
   gem 'pg', '~> 0.11'
