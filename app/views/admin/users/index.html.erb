@@ -1,0 +1,20 @@
+<div class="container">
+ 
+  <h1>人員維護</h1>
+
+  <table class="table" data-toggle="table">
+    <thead>
+      <tr>
+        <th>姓名</th>
+      </tr>
+    </thead>
+    <tbody>          
+      <% @users.each do |user| %>
+        <tr>         
+          <td><%= user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>  
+    
+</div>
