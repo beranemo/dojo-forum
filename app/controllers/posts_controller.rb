@@ -17,6 +17,10 @@ class PostsController < ApplicationController
       render :new
     end
   end
+  
+  def show
+    @post = Post.find(params[:id])
+  end
 
   private
   def post_params
