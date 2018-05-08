@@ -1,6 +1,8 @@
 <div class="container">
 
-  <h1>分類維護</h1>
+  <%= render "admin/aaa/tabbar", selected_item: '分類維護' %>
+
+  <br>
   
   <div class="form-inline" >
     <%= form_for [:admin, @category] do |f| %>

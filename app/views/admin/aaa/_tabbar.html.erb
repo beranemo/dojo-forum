@@ -1,0 +1,8 @@
+<ul class="admin-tab">
+  <li role="presentation" class="<%= 'active' if selected_item == '分類維護' %>">
+    <%= link_to("分類維護", admin_categories_path) %>
+  </li>
+  <li role="presentation" class="<%= 'active' if selected_item == '人員維護' %>">
+    <%= link_to("人員維護", admin_users_path) %>
+  </li>
+</ul>
