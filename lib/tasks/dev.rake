@@ -53,6 +53,6 @@ namespace :dev do
     puts "68 個 回覆 已創建"
   end
   
-  task :rebuild => ["db:drop", "db:create", "db:migrate", "db:seed", :fake_users_admin, :fake_users_normal, :fake_posts]
+  task rebuild: ["db:drop", "db:create", "db:migrate", "db:seed", :fake_users_admin, :fake_users_normal, :fake_posts]
   
 end
