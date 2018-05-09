@@ -9,6 +9,7 @@
       <tr>
         <th>回覆總數</th>
         <th>標題</th>
+        <th>作者</th>
         <th>最後回覆日期</th>
         <th>瀏覽人數</th>
       </tr>
@@ -18,6 +19,7 @@
         <tr>         
           <td></td>
           <td><%= link_to post.title, post_path(post.id) %></td>
+          <td><%= post.user.name %></td>
           <td></td>
           <td></td>
         </tr>

@@ -1,7 +1,7 @@
 namespace :dev do
   
   task fake_users_admin: :environment do
-    User.destroy_all
+    
     User.create(email: "xxx@xxx.com", password: "12345678", role: "admin", name: "小明")
     User.create(email: "yyy@yyy.com", password: "12345678", role: "admin", name: "小美")
     User.create(email: "zzz@zzz.com", password: "12345678", role: "admin", name: "小華")
@@ -33,7 +33,8 @@ namespace :dev do
     Post.destroy_all
     30.times do |i|
       Post.create!(
-        cotent: FFaker::Lorem.sentence,
+        title: "這是標題",
+        content: FFaker::Lorem.sentence,
         user_id: User.all.sample.id
         )
     end
@@ -51,5 +52,7 @@ namespace :dev do
     end
     puts "68 個 回覆 已創建"
   end
+  
+  task :rebuild => ["db:drop", "db:create", "db:migrate", "db:seed", :fake_users_admin, :fake_users_normal, :fake_posts]
   
 end

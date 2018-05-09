@@ -12,6 +12,7 @@ end
 puts "預設分類已創建!"
 
 # Default admin
+User.destroy_all
 
 User.create(email: "admin@example.com", password: "12345678", role: "admin")
 puts "預設管理員已創建!"
