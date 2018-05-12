@@ -19,7 +19,18 @@ class CommentsController < ApplicationController
       # redirect_back(fallback_location: root_path)  # 導回上一頁
     end
   end
+  
+  def edit
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+  end
 
+  def update
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+    @comment.update(comment_params)
+    redirect_to post_path(@post)    
+  end
 
   private
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   root 'posts#index'
   resources :posts, only: [:new, :create, :show] do
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy, :edit, :update]
   end
   
   namespace :admin do
