@@ -18,6 +18,7 @@
 #  name                   :string           default(""), not null
 #  avatar                 :string
 #  role                   :string
+#  intro                  :text
 #
 
 class User < ApplicationRecord
@@ -25,6 +26,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  
+  mount_uploader :avatar, AvatarUploader
   
   has_many :posts
   has_many :comments
