@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   impressionist actions: [:show]
   
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(20)
   end
   
   def new

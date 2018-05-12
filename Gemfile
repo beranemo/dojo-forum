@@ -23,6 +23,7 @@ gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'annotate'
 gem 'impressionist'
+gem 'kaminari'
 
 
 group :production do
