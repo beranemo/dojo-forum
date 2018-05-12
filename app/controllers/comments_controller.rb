@@ -8,6 +8,18 @@ class CommentsController < ApplicationController
     @post.save
     redirect_to post_path(@post)
   end
+  
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = Comment.find(params[:id])
+
+    if current_user.id == @comment.user.id
+      @comment.destroy
+      redirect_to post_path(@post)
+      # redirect_back(fallback_location: root_path)  # 導回上一頁
+    end
+  end
+
 
   private
 

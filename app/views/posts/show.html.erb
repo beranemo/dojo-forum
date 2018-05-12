@@ -26,7 +26,11 @@
       <h4>#<%= i %> <%= comment.user.name %></h4>
       <p><%= simple_format comment.content %></p>
       <p class="text-muted">
-        <em><%= time_ago_in_words(comment.created_at) %> ago </em>
+        <em><%= time_ago_in_words(comment.created_at) %> ago</em>
+        <% if current_user.id == comment.user.id %>
+          <em> - </em>
+          <%= link_to "Delete", post_comment_path(@post, comment), method: :delete %>
+        <% end %>
       </p>
     </div>
     <hr>
