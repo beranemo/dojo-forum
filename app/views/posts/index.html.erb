@@ -17,7 +17,7 @@
     <tbody>          
       <% @posts.each do |post| %>
         <tr>         
-          <td></td>
+          <td><%= post.comments_count %></td>
           <td><%= link_to post.title, post_path(post.id) %></td>
           <td><%= post.user.name %></td>
           <td></td>
