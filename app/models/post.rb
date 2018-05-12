@@ -17,6 +17,8 @@ class Post < ApplicationRecord
   
   mount_uploader :image, PhotoUploader
   
+  is_impressionable
+  
   belongs_to :user
   has_many :comments
 end

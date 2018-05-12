@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
+  impressionist actions: [:show]
   
   def index
     @posts = Post.all
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
+    impressionist(@post, "message...")
   end
 
   private

@@ -21,7 +21,7 @@
           <td><%= link_to post.title, post_path(post.id) %></td>
           <td><%= post.user.name %></td>
           <td></td>
-          <td></td>
+          <td><%= post.impressionist_count %></td>
         </tr>
       <% end %>
     </tbody>

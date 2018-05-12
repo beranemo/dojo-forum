@@ -22,6 +22,7 @@ gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
 gem 'font-awesome-rails'
 gem 'annotate'
+gem 'impressionist'
 
 
 group :production do
