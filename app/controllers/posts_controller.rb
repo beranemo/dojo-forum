@@ -28,6 +28,12 @@ class PostsController < ApplicationController
     @comment = Comment.new
     impressionist(@post, "message...")
   end
+  
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to root_path
+  end
 
   private
   def post_params

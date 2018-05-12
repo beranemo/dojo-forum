@@ -6,10 +6,16 @@
   <br>
   內容：<%= @post.content %>
   <br>
+  <p class="text-muted">
+    <em><%= time_ago_in_words(@post.created_at) %> ago</em>
+    <% if current_user.id == @post.user.id %>
+      <em> - </em>
+      <%= link_to "刪除", post_path(@post), method: :delete %>
+    <% end %>
+  </p>
   <hr>
  </div>
 </div>
-
 
 
 <div class="container">
