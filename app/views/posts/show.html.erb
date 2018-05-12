@@ -16,19 +16,26 @@
   <div class="row">
   
   <!-- 顯示與相關的評論 -->
-  <% @post.comments.each do |comment| %>
+  <% if params[:page] %>
+    <% i = params[:page].to_i * 10 + 1 %>
+  <% else %>
+    <% i = 1 %>
+  <% end %>
+  <% @comments.each do |comment| %> 
     <div>
-      <h4><%= comment.user.name %></h4>
+      <h4>#<%= i %> <%= comment.user.name %></h4>
       <p><%= simple_format comment.content %></p>
       <p class="text-muted">
         <em><%= time_ago_in_words(comment.created_at) %> ago </em>
       </p>
     </div>
     <hr>
+    <% i = i + 1 %>
   <% end %>
 
-  
-   <%= form_for [@post, @comment] do |f| %>
+  <%= paginate @comments %> 
+
+  <%= form_for [@post, @comment] do |f| %>
     <div class="form-group">
       <%= f.text_area :content, placeholder: "留個言吧", class: "form-control" %>
     </div>

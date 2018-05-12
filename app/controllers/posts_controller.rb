@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.page(params[:page]).per(20)
     @comment = Comment.new
     impressionist(@post, "message...")
   end
