@@ -20,7 +20,7 @@
           <td><%= post.comments_count %></td>
           <td><%= link_to post.title, post_path(post.id) %></td>
           <td><%= post.user.name %></td>
-          <td></td>
+          <td><%= post.last_comment_time %></td>
           <td><%= post.impressionist_count %></td>
         </tr>
       <% end %>
