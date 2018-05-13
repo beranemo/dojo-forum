@@ -3,18 +3,18 @@ a {
   display: inline-block;
 }
 
-/* ============================== tab-admin =========================*/
-.admin-tab{
+/* ============================== tab-primary =========================*/
+.tab-primary {
   margin: 35px 0;
   text-align: center;
 }
 
-.admin-tab li{
+.tab-primary li {
   float: none;
   display: inline-block;
 }
 
-.admin-tab li a{
+.tab-primary li a {
   margin: 0;
   padding: 10px 30px;
   border-radius: 0px;
@@ -23,9 +23,9 @@ a {
   color: #696969;
 }
 
-.admin-tab > li.active > a,
-.admin-tab > li.active > a:hover,
-.admin-tab > li.active > a:focus{
+.tab-primary > li.active > a,
+.tab-primary > li.active > a:hover,
+.tab-primary > li.active > a:focus {
   color: #000;
   background-color: white;  
   border-bottom: 5px solid;

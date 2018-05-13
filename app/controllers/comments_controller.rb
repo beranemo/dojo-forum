@@ -31,7 +31,8 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
     @comment.update(comment_params)
-    redirect_to post_path(@post)    
+    # redirect_to post_path(@post)
+    redirect_back(fallback_location: root_path)  # 導回上一頁
   end
 
   private

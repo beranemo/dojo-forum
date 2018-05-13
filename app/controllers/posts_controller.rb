@@ -42,7 +42,13 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to post_path(@post)
+    
+    if params[:from_type] == "1"
+      redirect_to user_path(@post.user)
+    else
+      redirect_to post_path(@post)
+    end
+    #redirect_back(fallback_location: root_path)  # 導回上一頁
   end
   
   private

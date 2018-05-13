@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    member do
+      get :posts
+      get :comments
+    end
+  end
   
 end
