@@ -28,6 +28,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @comments = @user.comments
   end
+  
+  def collects
+    @user = User.find(params[:id])
+    @collects = @user.favorited_posts
+  end
 
   private
 

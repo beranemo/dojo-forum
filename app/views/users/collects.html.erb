@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-4">
+      <div class="text-center">
+        <% if @user.avatar? %>
+          <%= image_tag @user.avatar, class: "img-responsive img-rounded", width: 350, height: 350 %>
+        <% else %>
+          <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
+        <% end %> 
+      </div>
+    </div>
+
+    <div class="col-md-9 col-sm-8">
+      <h2><%= @user.name %></h2>
+      <p><strong><%= @user.email %></strong></p>
+      <div><%= simple_format @user.intro %></div>
+      <% if @user.id == current_user.id %>
+        <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <br>
+
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    
+    <%= render "users/aaa/tabbar", selected_item: "收藏的文章" %>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>標題</th>
+          <th>發佈時間</th>
+          <% if current_user == @user %>
+            <th>功能</th>
+          <% end %>
+        </tr>        
+      </thead>
+      <tbody>
+        <% @collects.each do |post| %>
+          <tr>
+            <td><%= post.title %></td>
+            <td><%= post.created_at.to_s[0..15] %></td>
+            <td class="btn-control-group">
+              <% if current_user == @user %>
+                <% if not post.is_favorited?(current_user) %>
+                  <%= link_to '收藏', favorite_post_path(post), method: :post, class: "btn btn-primary", data: { :"disable-with" => "Waiting...." } %>
+                <% else %>  
+                  <%= link_to '取消收藏', unfavorite_post_path(post), method: :post, class: "btn btn-info", data: { :"disable-with" => "Waiting...." } %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+  </div>
+</div>
