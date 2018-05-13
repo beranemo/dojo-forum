@@ -35,7 +35,8 @@ namespace :dev do
       Post.create!(
         title: "這是標題",
         content: FFaker::Lorem.sentence,
-        user_id: User.all.sample.id
+        user_id: User.all.sample.id,
+        status: "craft"
         )
     end
     puts "30 個 文章 已創建"

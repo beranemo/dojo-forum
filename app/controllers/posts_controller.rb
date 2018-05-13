@@ -3,16 +3,22 @@ class PostsController < ApplicationController
   impressionist actions: [:show]
   
   def index
-    @posts = Post.order(id: :desc).page(params[:page]).per(20)
+    @posts = Post.all.where(status: "craft").order(id: :desc).page(params[:page]).per(20)
   end
   
   def new
     @post = Post.new
   end
-  
+   
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    # "commit"=>"暫存成草稿", "controller"=>"posts"
+    if params[:commit] == "暫存成草稿"
+      @post.status = "draft"
+    else
+      @post.status = "craft"
+    end
     if @post.save
       flash[:notice] = "文章已成功新增"
       redirect_to root_path
