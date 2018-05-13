@@ -58,7 +58,7 @@ class PostsController < ApplicationController
       flash[:alert] = "已被收藏"
     else
       @post.favorites.create!(user: current_user)
-      flash[:alert] = "文章收藏成功"
+      flash[:notice] = "文章收藏成功"
     end
     redirect_back(fallback_location: root_path)  # 導回上一頁
   end
