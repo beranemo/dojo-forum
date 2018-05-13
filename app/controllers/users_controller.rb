@@ -33,6 +33,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @collects = @user.favorited_posts
   end
+  
+  def friends
+    @user = User.find(params[:id])
+    
+    # 送出好友邀請，想要他成為好友
+    @wanted_friends = @user.friends - @user.want2yous
+    
+    # 想要你成為他好友的人
+    @want2yous = @user.want2yous - @user.friends
+    
+    # 互相為好友的人
+    @befrinds = @user.want2yous & @user.friends
+  end
 
   private
 

@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       get :posts
       get :comments
       get :collects
+      get :friends
     end
   end
   

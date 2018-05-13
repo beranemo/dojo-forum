@@ -1,0 +1,31 @@
+<div>
+  <h1>等待回應中</h1>
+  
+  <ul>
+    <% @wanted_friends.each do |girl| %>
+      <li><%= girl.name %></li>
+    <% end %>
+  </ul>
+</div>
+
+
+<div>
+  <h1>想認識你的人</h1>
+  
+  <ul>
+    <% @want2yous.each do |boy| %>
+      <li><%= boy.name %></li>
+    <% end %>
+  </ul>
+</div>
+
+
+<div>
+  <h1>你的好友</h1>
+  
+  <ul>
+    <% @befrinds.each do |friend| %>
+      <li><%= friend.name %></li>
+    <% end %>
+  </ul>
+</div>

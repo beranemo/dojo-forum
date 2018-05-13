@@ -35,8 +35,25 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_posts, through: :favorites, source: :post
   
+  # 好友邀請相關功能
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+  
+  # 對我發出好友邀請的人
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id"
+  has_many :want2yous, through: :inverse_friendships, source: :user
+
+  def friend?(user)
+    self.friends.include?(user) & self.want2yous.include?(user)
+  end
+  
+  def request_friend?(user)
+    self.friends.include?(user)
+  end
+  
+  def want_to_you?(user)
+    self.want2yous.include?(user)
+  end
   
   def admin?
     self.role == "admin"
