@@ -1,27 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3 col-sm-4">
-      <div class="text-center">
-        <% if @user.avatar? %>
-          <%= image_tag @user.avatar, class: "img-responsive img-rounded", width: 350, height: 350 %>
-        <% else %>
-          <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
-        <% end %> 
-      </div>
-    </div>
-
-    <div class="col-md-9 col-sm-8">
-      <h2><%= @user.name %></h2>
-      <p><strong><%= @user.email %></strong></p>
-      <div><%= simple_format @user.intro %></div>
-      <% if @user.id == current_user.id %>
-        <%= link_to 'Edit Profile', edit_user_path(@user), class: "btn btn-primary" %>
-      <% end %>
-    </div>
-    <br>
-
-  </div>
-</div>
+<%= render "users/aaa/user_info" %>
 
 <div class="container">
   <div class="row">
