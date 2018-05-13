@@ -34,6 +34,11 @@ class UsersController < ApplicationController
     @collects = @user.favorited_posts
   end
   
+  def drafts
+    @user = User.find(params[:id])
+    @posts = Post.all.where(status: "draft").order(id: :desc)
+  end
+  
   def friends
     @user = User.find(params[:id])
     

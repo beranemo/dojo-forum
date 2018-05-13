@@ -47,8 +47,12 @@ class PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
+    if params[:commit] == "草稿儲存"
+      @post.status = "draft"
+    else
+      @post.status = "craft"
+    end
     @post.update(post_params)
-    
     if params[:from_type] == "1"
       redirect_to user_path(@post.user)
     else

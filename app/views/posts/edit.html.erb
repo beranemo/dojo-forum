@@ -27,7 +27,8 @@
         <%= f.label :content, "文章內容" %>
         <%= f.text_area :content , class: 'form-control'%>  
       </div>
-      <%= f.submit "修改", class: "btn btn-primary" %>
+      <%= f.submit "草稿儲存", class: "btn btn-primary" %>
+      <%= f.submit "發佈", class: "btn btn-primary" %>
       <%= f.submit "復原", type: :reset, class: "btn btn-default" %>
     <% end %>
   <div class="row">

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       get :comments
       get :collects
       get :friends
+      get :drafts
     end
   end
   
