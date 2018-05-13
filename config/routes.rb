@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     member do
       get :posts
       get :comments
+      get :collects
     end
   end
   

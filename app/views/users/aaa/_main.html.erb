@@ -25,37 +25,34 @@
 
 <div class="container">
   <div class="row">
-  
-    <%= render "users/aaa/tabbar", selected_item: "回覆的內容" %>
+    
+    <%= render "users/aaa/tabbar", selected_item: "發表的文章" %>
     
     <table class="table">
       <thead>
         <tr>
           <th>標題</th>
-          <th>回覆時間</th>
-          <th>回覆內容</th>
+          <th>發佈時間</th>
           <% if current_user == @user %>
             <th>功能</th>
           <% end %>
         </tr>        
       </thead>
       <tbody>
-        <% @comments.each do |comment| %>
+        <% @posts.each do |post| %>
           <tr>
-            <td><%= comment.post.title %></td>
-            <td><%= comment.created_at.to_s[0..15] %></td>
-            <td><%= comment.content %></td>
+            <td><%= post.title %></td>
+            <td><%= post.created_at.to_s[0..15] %></td>
             <td class="btn-control-group">
               <% if current_user == @user %>
-                <%= link_to '<i class = "glyphicon glyphicon-pencil" aria-hidden="true"></i>'.html_safe, edit_post_comment_path(comment.post, comment), remote: true %>
-                <%= link_to '<i class = "glyphicon glyphicon-remove text-danger" aria-hidden="true"></i>'.html_safe, post_comment_path(comment.post, comment), method: :delete, data: { confirm: "Are you sure" } %>
+                <%= link_to '<i class = "glyphicon glyphicon-pencil" aria-hidden="true"></i>'.html_safe, edit_post_path(post) %>
+                <%= link_to '<i class = "glyphicon glyphicon-remove text-danger" aria-hidden="true"></i>'.html_safe, post_path(post), method: :delete, data: { confirm:"Are you sure" } %>
               <% end %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-    
     
   </div>
 </div>
