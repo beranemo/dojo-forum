@@ -36,7 +36,7 @@ class Api::V1::PostsController < ApiController
   end
   
   def update
-    @post = post.find_by(id: params[:id])
+    @post = Post.find_by(id: params[:id])
     if @post.update(post_params)
       render json: {
         message: "Post updated successfully!",
@@ -47,6 +47,14 @@ class Api::V1::PostsController < ApiController
         errors: @post.errors
       }
     end
+  end
+  
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    render json: {
+      message: "Post destroy successfully!"
+    }
   end
   
   private
