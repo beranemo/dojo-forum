@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       post :favorite
       post :unfavorite
     end
+    collection do
+      get :feeds
+    end
   end
   
   namespace :admin do

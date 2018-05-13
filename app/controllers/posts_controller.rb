@@ -71,6 +71,15 @@ class PostsController < ApplicationController
     redirect_back(fallback_location: root_path)  # 導回上一頁
   end
   
+  def feeds
+    @users_count = User.count
+    @posts_count = Post.count
+    @comments_count = Comment.count
+    
+    @hot_users = User.all.order(comments_count: :desc).limit(10)
+    @hot_posts = Post.all.order(comments_count: :desc).limit(10)
+  end
+  
   private
   def post_params
     params.require(:post).permit(:title, :content, :image)
