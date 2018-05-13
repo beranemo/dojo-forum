@@ -25,6 +25,7 @@ class Api::V1::PostsController < ApiController
   
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       render json: {
         message: "Post created successfully!",
