@@ -6,7 +6,14 @@
           <%= image_tag @user.avatar, class: "img-responsive img-rounded", width: 350, height: 350 %>
         <% else %>
           <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
-        <% end %> 
+        <% end %>
+
+        <% if current_user.friend?(@user) %>
+          <%= link_to '取消好友邀請', friendship_path(@user), method: :delete, class: "btn btn-link" %>
+        <% else %>
+          <%= link_to '送出好友邀請', friendships_path(friend_id: @user), method: :post,class: "btn btn-primary" %>
+        <% end %>
+       
       </div>
     </div>
 
