@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   root 'posts#index'
   resources :posts, only: [:new, :create, :show, :destroy, :edit, :update] do
     resources :comments, only: [:create, :destroy, :edit, :update]
+    member do
+      post :favorite
+      post :unfavorite
+    end
   end
   
   namespace :admin do
