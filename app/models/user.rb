@@ -26,7 +26,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  
+
+  before_create :generate_authentication_token
+
   mount_uploader :avatar, AvatarUploader
   
   has_many :posts
@@ -65,5 +67,10 @@ class User < ApplicationRecord
   
   def to_normal
     self.update_columns(role: "normal")
+  end
+
+  def generate_authentication_token
+    # Devise.friendly_token 會自動產生 20 字元長的亂數
+    self.authentication_token = Devise.friendly_token
   end
 end
