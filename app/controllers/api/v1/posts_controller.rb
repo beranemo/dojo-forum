@@ -7,10 +7,17 @@ class Api::V1::PostsController < ApiController
   end
   
   def show
-    @post = Post.find(params[:id])
-    render json: {
+    @post = Post.find_by(id: params[:id])
+    if !@post
+      render json: {
+        message: "Can't find the post!",
+        status: 400
+      }
+    else
+      render json: {
       title: @post.title,
       content: @post.content
     }
+    end
   end
 end
