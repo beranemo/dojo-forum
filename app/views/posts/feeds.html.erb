@@ -23,7 +23,7 @@
         <% @hot_users.each do |user| %>
         <div class="media chatter-box">
           <div class="media-left col-md-2">
-            <%= image_tag user.avatar , class:' img-circle', style: 'width:65px; height:65px;' if user.avatar? %>
+            <%= image_tag user.avatar, class:' img-circle', style: 'width:60px; height:60px;' if user.avatar? %>
               <%= image_tag "http://via.placeholder.com/60x60", class: 'img-circle'  unless user.avatar? %>
           </div>
           <div class="media-heading col-md-10">
@@ -40,8 +40,8 @@
         <% @hot_posts.each do |post| %>
         <div class="media chatter-box">
           <div class="media-left col-md-2">
-            <%= image_tag post.image , class:' img-circle', style: 'width:65px; height:65px;' if post.image? %>
-              <%= image_tag "http://via.placeholder.com/60x60", class: 'img-circle' unless post.image? %>
+            <%= image_tag post.image, style: 'width:65px; height:65px;' if post.image? %>
+              <%= image_tag "http://via.placeholder.com/65x65" unless post.image? %>
           </div>
           <div class="media-heading col-md-10">
             <h4><%= link_to post.title, post_path(post) %></h4>
