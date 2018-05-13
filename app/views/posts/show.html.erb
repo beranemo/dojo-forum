@@ -7,6 +7,21 @@
   內容：<%= @post.content %>
   <br>
   作者：<%= @post.user.name %>
+     
+  <% if not current_user == @post.user %>
+
+    <% if current_user.friend?(@post.user) %>
+
+    <% elsif current_user.request_friend?(@post.user) %>
+      <%= link_to '取消好友邀請', friendship_path(@post.user), method: :delete, class: "btn btn-link" %>
+    <% elsif current_user.want_to_you?(@post.user) %>
+      <%= link_to '接受好友邀請', friendships_path(friend_id: @post.user), method: :post,class: "btn btn-primary" %>
+    <% else %>
+      <%= link_to '送出好友邀請', friendships_path(friend_id: @post.user), method: :post,class: "btn btn-primary" %>
+    <% end %>
+
+  <% end %>
+      
   <p class="text-muted">
     <em><%= time_ago_in_words(@post.created_at) %> ago</em>
     <% if current_user.id == @post.user.id %>

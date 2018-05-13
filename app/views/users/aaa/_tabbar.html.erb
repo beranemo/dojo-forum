@@ -8,4 +8,8 @@
   <li role="presentation" class="<%= 'active' if selected_item == '收藏的文章' %>">
     <%= link_to("收藏的文章", collects_user_path) %>
   </li>
+  <li role="presentation" class="<%= 'active' if selected_item == '好友清單' %>">
+    <%= link_to("好友清單", friends_user_path) %>
+  </li>
+  
 </ul>

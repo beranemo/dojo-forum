@@ -1,31 +1,52 @@
-<div>
-  <h1>等待回應中</h1>
+<%= render "users/aaa/user_info" %>
+
+<div class="container">
+  <div class="row">
   
-  <ul>
-    <% @wanted_friends.each do |girl| %>
-      <li><%= girl.name %></li>
-    <% end %>
-  </ul>
-</div>
+    <%= render "users/aaa/tabbar", selected_item: "好友清單" %>
+    
+    <div>
+      <h3>等待回應中</h3>
+
+      <ul>
+        <% @wanted_friends.each do |girl| %>
+          <li><%= girl.name %></li>
+        <% end %>
+      </ul>
+    </div>
 
 
-<div>
-  <h1>想認識你的人</h1>
-  
-  <ul>
-    <% @want2yous.each do |boy| %>
-      <li><%= boy.name %></li>
-    <% end %>
-  </ul>
-</div>
+    <div>
+      <h3>想認識你的人</h3>
+
+      <ul>
+        <% @want2yous.each do |boy| %>
+          <li>
+            <%= boy.name %>
+            <% if not current_user == boy %>
+ 
+              <% if current_user.want_to_you?(boy) %>
+                <%= link_to '取消好友邀請', friendship_path(boy), method: :delete, class: "btn btn-primary" %>
+                <%= link_to '接受好友邀請', friendships_path(friend_id: boy), method: :post,class: "btn btn-primary" %>
+              <% end %>
+
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
 
 
-<div>
-  <h1>你的好友</h1>
-  
-  <ul>
-    <% @befrinds.each do |friend| %>
-      <li><%= friend.name %></li>
-    <% end %>
-  </ul>
+    <div>
+      <h3>你的好友</h3>
+
+      <ul>
+        <% @befrinds.each do |friend| %>
+          <li><%= friend.name %></li>
+        <% end %>
+      </ul>
+    </div>  
+    
+    
+  </div>
 </div>
