@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.all.where(status: "craft").order(id: :desc).page(params[:page]).per(20)
+    @categories = Category.all
   end
   
   def new

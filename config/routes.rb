@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   
   resources :friendships, only: [:create, :destroy]
   
+  resources :categories, only: [:show]
   
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
