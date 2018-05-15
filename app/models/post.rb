@@ -12,6 +12,7 @@
 #  image             :string
 #  comments_count    :integer          default(0)
 #  last_comment_time :datetime
+#  who_can_see       :string(20)
 #
 
 class Post < ApplicationRecord

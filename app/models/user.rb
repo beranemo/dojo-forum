@@ -19,6 +19,8 @@
 #  avatar                 :string
 #  role                   :string
 #  intro                  :text
+#  comments_count         :integer          default(0)
+#  authentication_token   :string
 #
 
 class User < ApplicationRecord
