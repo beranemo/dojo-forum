@@ -27,6 +27,19 @@
         <%= f.label :content, "文章內容" %>
         <%= f.text_area :content , class: 'form-control'%>  
       </div>
+      
+      <div class="form-group">
+        <label>Who can see</label>
+        <div class="form-control" style="border: 0;box-shadow: none;padding-left: 0px;"> 
+          <%= f.radio_button :who_can_see ,"all", :checked => true %>
+          <%= f.label :who_can_see_all, "All" %> &nbsp; 
+          <%= f.radio_button :who_can_see ,"friends" %>
+          <%= f.label :who_can_see_friends, "Friends" %> &nbsp; 
+          <%= f.radio_button :who_can_see ,"me" %>
+          <%= f.label :who_can_see_me, "Myself" %> 
+        </div>
+      </div>
+      
       <div class="form-group">
         <label>文章分類</label>
         <div class="form-control" style="border: 0;box-shadow: none;padding-left: 0px;">
