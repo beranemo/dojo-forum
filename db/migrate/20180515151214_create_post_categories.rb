@@ -6,5 +6,7 @@ class CreatePostCategories < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
+      add_index :post_categories, :post_id
+      add_index :post_categories, :category_id
   end
 end

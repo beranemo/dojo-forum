@@ -27,6 +27,13 @@
         <%= f.label :content, "文章內容" %>
         <%= f.text_area :content , class: 'form-control'%>  
       </div>
+      
+      <div class="form-group">
+        <%= f.collection_check_boxes(:category_ids, Category.all, :id ,:name) do |category| %>
+          <%= category.check_box %> <%= category.label%> &nbsp;
+        <% end %> 
+      </div>
+      
       <%= f.submit "暫存成草稿", class: "btn btn-primary" %>
       <%= f.submit "新增", class: "btn btn-primary" %>
     <% end %>
