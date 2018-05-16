@@ -30,6 +30,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   before_create :generate_authentication_token
+  before_save :initialize_name
 
   mount_uploader :avatar, AvatarUploader
   
@@ -79,5 +80,11 @@ class User < ApplicationRecord
   def generate_authentication_token
     # Devise.friendly_token 會自動產生 20 字元長的亂數
     self.authentication_token = Devise.friendly_token
+  end
+  
+  def initialize_name
+    if self.name == '' || self.name == nil
+      self.name = self.email.split('@').first
+    end
   end
 end
