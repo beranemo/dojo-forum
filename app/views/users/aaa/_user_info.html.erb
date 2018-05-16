@@ -7,7 +7,21 @@
         <% else %>
           <img src="http://via.placeholder.com/350x350" class="img-responsive img-rounded">
         <% end %>
-       
+        
+        <% if not current_user == @user %>
+          <br>
+          <% if current_user.friend?(@user) %>
+
+          <% elsif current_user.request_friend?(@user) %>
+            <%= link_to '取消好友邀請', friendship_path(@user), method: :delete, class: "btn btn-link" %>
+          <% elsif current_user.want_to_you?(@user) %>
+            <%= link_to '接受好友邀請', friendships_path(friend_id: @user), method: :post,class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to '送出好友邀請', friendships_path(friend_id: @user), method: :post,class: "btn btn-primary" %>
+          <% end %>
+
+        <% end %>
+      
       </div>
     </div>
 
