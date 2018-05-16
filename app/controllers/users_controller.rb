@@ -31,16 +31,33 @@ class UsersController < ApplicationController
   
   def collects
     @user = User.find(params[:id])
+    
+    if @user != current_user
+      flash[:alert] = "您無此權限做此操作"
+      redirect_to root_path
+    end
+    
     @collects = @user.favorited_posts
   end
   
   def drafts
     @user = User.find(params[:id])
+    
+    if @user != current_user
+      flash[:alert] = "您無此權限做此操作"
+      redirect_to root_path
+    end
+    
     @posts = Post.all.where(status: "draft").order(id: :desc)
   end
   
   def friends
     @user = User.find(params[:id])
+    
+    if @user != current_user
+      flash[:alert] = "您無此權限做此操作"
+      redirect_to root_path
+    end
     
     # 送出好友邀請，想要他成為好友
     @wanted_friends = @user.friends - @user.want2yous
