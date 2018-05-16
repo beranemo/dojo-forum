@@ -67,6 +67,11 @@ class User < ApplicationRecord
     self.update_columns(role: "admin")
   end
   
+  def all_friends
+    friends = self.friends + self.want2yous
+    friends.uniq
+  end
+  
   def to_normal
     self.update_columns(role: "normal")
   end

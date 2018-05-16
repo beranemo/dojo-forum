@@ -3,8 +3,12 @@ class PostsController < ApplicationController
   impressionist actions: [:show]
   
   def index
-    @posts = Post.all.where(status: "craft").order(id: :desc).page(params[:page]).per(20)
     @categories = Category.all
+    if user_signed_in?
+      @posts = Post.all.where(status: "craft").check_who_can_see(current_user).order(id: :desc).page(params[:page]).per(20)
+    else
+      @posts = Post.all.where(status: "craft", who_can_see: "all").order(id: :desc).page(params[:page]).per(20)
+    end
   end
   
   def new
@@ -95,5 +99,6 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :content, :image, :who_can_see, category_ids: [])
   end
+  
 
 end

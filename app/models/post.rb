@@ -35,4 +35,10 @@ class Post < ApplicationRecord
   def is_favorited?(user)
     self.favorited_users.include?(user)
   end
+  
+  def self.check_who_can_see(user)
+    self.where(who_can_see: "all").or(where(who_can_see: "friends", user: [user.all_friends, user])).or(where(who_can_see: "me", user: user))
+  end
+  
+  
 end

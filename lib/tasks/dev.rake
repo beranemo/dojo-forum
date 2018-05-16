@@ -36,7 +36,8 @@ namespace :dev do
         title: "這是標題",
         content: FFaker::Lorem.sentence,
         user_id: User.all.sample.id,
-        status: "craft"
+        status: "craft",
+        who_can_see: "all"
         )
     end
     puts "30 個 文章 已創建"
