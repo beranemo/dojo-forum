@@ -55,14 +55,14 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     
-    if @post.user != current_user
+    if @post.status == "draft" && @post.user != current_user
       flash[:alert] = "您無此權限做此操作"
       redirect_to root_path
-    end
-    
-    @comments = @post.comments.page(params[:page]).per(20)
-    @comment = Comment.new
-    impressionist(@post, "message...")
+    else
+      @comments = @post.comments.page(params[:page]).per(20)
+      @comment = Comment.new
+      impressionist(@post, "message...")
+    end 
   end
   
   def destroy
