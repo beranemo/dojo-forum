@@ -3,6 +3,9 @@
   <%= image_tag @post.image, width: '600px' %>
   <br>  
   標題：<%= @post.title %>
+  
+  <%= render "posts/aaa/btn_favorite", x: @post %>
+  
   <br>
   內容：<%= @post.content %>
   <br>
@@ -18,11 +21,7 @@
       <%= link_to "刪除", post_path(@post), method: :delete %>
     <% end %>
   </p>
-  <% if not @post.is_favorited?(current_user) %>
-    <%= link_to '收藏', favorite_post_path(@post), method: :post, class: "btn btn-primary", data: { :"disable-with" => "Waiting...." } %>
-  <% else %>  
-    <%= link_to '取消收藏', unfavorite_post_path(@post), method: :post, class: "btn btn-info", data: { :"disable-with" => "Waiting...." } %>
-  <% end %>
+  
   <hr>
  </div>
 </div>

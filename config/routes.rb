@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     member do
       post :favorite
       post :unfavorite
+      post :template_unfavorite
     end
     collection do
       get :feeds

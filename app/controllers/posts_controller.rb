@@ -95,15 +95,23 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     favorites = Favorite.where(post: @post, user: current_user)
     if favorites.exists?
-      flash[:alert] = "已被收藏"
+      # flash[:alert] = "已被收藏"
     else
       @post.favorites.create!(user: current_user)
-      flash[:notice] = "文章收藏成功"
+      # flash[:notice] = "文章收藏成功"
     end
-    redirect_back(fallback_location: root_path)  # 導回上一頁
+    # redirect_back(fallback_location: root_path)  # 導回上一頁
   end
 
   def unfavorite
+    @post = Post.find(params[:id])
+    favorites = Favorite.where(post: @post, user: current_user)
+    favorites.destroy_all
+    # flash[:alert] = "已取消收藏文章"
+    # redirect_back(fallback_location: root_path)  # 導回上一頁
+  end
+  
+  def template_unfavorite
     @post = Post.find(params[:id])
     favorites = Favorite.where(post: @post, user: current_user)
     favorites.destroy_all

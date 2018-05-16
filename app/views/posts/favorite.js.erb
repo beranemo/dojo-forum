@@ -1,0 +1,2 @@
+<% html = j( render "posts/aaa/btn_favorite", x: @post ) %>
+$('#favorite-<%= @post.id %>').html("<%= html %>")
