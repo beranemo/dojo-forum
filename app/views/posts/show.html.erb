@@ -8,19 +8,7 @@
   <br>
   作者：<%= link_to @post.user.name, user_path(@post.user) %>
      
-  <% if not current_user == @post.user %>
-
-    <% if current_user.friend?(@post.user) %>
-
-    <% elsif current_user.request_friend?(@post.user) %>
-      <%= link_to '取消好友邀請', friendship_path(@post.user), method: :delete, class: "btn btn-warning btn-xs" %>
-    <% elsif current_user.want_to_you?(@post.user) %>
-      <%= link_to '接受好友邀請', friendships_path(friend_id: @post.user), method: :post,class: "btn btn-warning btn-xs" %>
-    <% else %>
-      <%= link_to '送出好友邀請', friendships_path(friend_id: @post.user), method: :post,class: "btn btn-warning btn-xs" %>
-    <% end %>
-
-  <% end %>
+  <%= render "aaa/btn_friend", x: @post.user %>
       
   <p class="text-muted">
     <em><%= time_ago_in_words(@post.created_at) %> ago</em>
