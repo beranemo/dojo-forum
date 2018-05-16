@@ -9,6 +9,7 @@
       <thead>
         <tr>
           <th>標題</th>
+          <th>作者</th>
           <th>回覆時間</th>
           <th>回覆內容</th>
           <% if current_user == @user %>
@@ -19,7 +20,8 @@
       <tbody>
         <% @comments.each do |comment| %>
           <tr>
-            <td><%= comment.post.title %></td>
+            <td><%= link_to comment.post.title, post_path(comment.post.id) %></td>
+            <td><%= link_to comment.post.user.name, user_path(comment.post.user) %></td>
             <td><%= comment.created_at.to_s[0..15] %></td>
             <td><%= comment.content %></td>
             <td class="btn-control-group">

@@ -38,7 +38,7 @@
   <% end %>
   <% @comments.each do |comment| %> 
     <div>
-      <h4>#<%= i %> <%= comment.user.name %> <span><%= render "aaa/btn_friend", x: comment.user %></span></h4>
+      <h4>#<%= i %> <%= link_to comment.user.name, user_path(comment.user) %> <span><%= render "aaa/btn_friend", x: comment.user %></span></h4>
         
       <p><%= simple_format comment.content %></p>
       <p class="text-muted">
