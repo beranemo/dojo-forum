@@ -18,7 +18,7 @@
       <tbody>
         <% @collects.each do |post| %>
           <tr>
-            <td><%= post.title %></td>
+            <td><%= link_to post.title, post_path(post.id) %></td>
             <td><%= post.created_at.to_s[0..15] %></td>
             <td class="btn-control-group">
               <% if current_user == @user %>
