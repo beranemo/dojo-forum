@@ -36,21 +36,23 @@
       <table class="table">
       <thead>
         <tr>
-          <th>回覆總數</th>
+          <th class="alncenter post-id">文章編號</th>
+          <th class="alncenter">回覆總數</th>
           <th>標題</th>
           <th>作者</th>
-          <th>最後回覆日期</th>
-          <th>瀏覽人數</th>
+          <th>最後回覆時間</th>
+          <th class="alncenter">瀏覽人數</th>
         </tr>
       </thead>
       <tbody>          
         <% @posts.each do |post| %>
-          <tr>         
-            <td><%= post.comments_count %></td>
+          <tr>
+            <td class="alncenter"># <%= post.id %></td>         
+            <td class="alncenter"><%= post.comments_count %></td>
             <td><%= link_to post.title, post_path(post.id) %></td>
             <td><%= link_to post.user.name, user_path(post.user) %></td>
             <td><%= post.last_comment_time.to_s[0..15] %></td>
-            <td><%= post.impressionist_count %></td>
+            <td class="alncenter"><%= post.impressionist_count %></td>
           </tr>
         <% end %>
       </tbody>
