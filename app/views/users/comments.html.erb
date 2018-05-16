@@ -23,11 +23,11 @@
             <td><%= link_to comment.post.title, post_path(comment.post.id) %></td>
             <td><%= link_to comment.post.user.name, user_path(comment.post.user) %></td>
             <td><%= comment.created_at.to_s[0..15] %></td>
-            <td><%= comment.content %></td>
+            <td><%= truncate(comment.content, length: 60) %></td>
             <td class="btn-control-group">
               <% if current_user == @user %>
-                <%= link_to '<i class = "glyphicon glyphicon-pencil" aria-hidden="true"></i>'.html_safe, edit_post_comment_path(comment.post, comment), remote: true %>
-                <%= link_to '<i class = "glyphicon glyphicon-remove text-danger" aria-hidden="true"></i>'.html_safe, post_comment_path(comment.post, comment), method: :delete, data: { confirm: "Are you sure" } %>
+                <%= link_to "編輯", edit_post_comment_path(comment.post, comment), class: "btn btn-info btn-xs", remote: true %> 
+                <%= link_to "刪除", post_comment_path(comment.post, comment), class: "btn btn-danger btn-xs", method: :delete, data: { confirm: "Are you sure" } %>
               <% end %>
             </td>
           </tr>

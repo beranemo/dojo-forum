@@ -23,9 +23,9 @@
             <td class="btn-control-group">
               <% if current_user == @user %>
                 <% if not post.is_favorited?(current_user) %>
-                  <%= link_to '收藏', favorite_post_path(post), method: :post, class: "btn btn-primary", data: { :"disable-with" => "Waiting...." } %>
+                  <%= link_to '收藏', favorite_post_path(post), method: :post, class: "btn btn-primary btn-xs", data: { :"disable-with" => "Waiting...." } %>
                 <% else %>  
-                  <%= link_to '取消收藏', template_unfavorite_post_path(post), method: :post, class: "btn btn-info", data: { confirm: "此篇文章將從我的收藏列表移除，是否確定？", :"disable-with" => "Waiting...." } %>
+                  <%= link_to '取消收藏', template_unfavorite_post_path(post), method: :post, class: "btn btn-warning btn-xs", data: { confirm: "此篇文章將從我的收藏列表移除，是否確定？", :"disable-with" => "Waiting...." } %>
                 <% end %>
               <% end %>
             </td>
