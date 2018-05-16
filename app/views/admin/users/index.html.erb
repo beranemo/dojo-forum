@@ -8,6 +8,7 @@
     <thead>
       <tr>
         <th>姓名</th>
+        <th>帳號</th>
         <th>狀態</th>
         <th>功能</th>
       </tr>
@@ -16,18 +17,19 @@
       <% @users.each do |user| %>
         <tr>         
           <td><%= user.name %></td>
+          <th><%= user.email %></th>
           <td>
             <% if user.admin? %>
-              <span class="label label-danger">管理員</span>
+              管理員
             <% else %>
-              <span class="label label-success">一般使用者</span>
+              一般使用者
             <% end %>
           </td>
-          <td class="data-table">
+          <td >
             <% if user.admin? %>
-              <%= link_to '轉換成一般使用者'.html_safe, to_normal_admin_user_path(user), method: :post %>
+              <%= link_to '轉換成一般使用者', to_normal_admin_user_path(user), method: :post, class: "btn btn-warning btn-xs" %>
             <% else %>
-              <%= link_to '升級為管理員'.html_safe, to_admin_admin_user_path(user), method: :post %>
+              <%= link_to '升級為管理員', to_admin_admin_user_path(user), method: :post, class: "btn btn-info btn-xs" %>
             <% end %>
           </td>
         </tr>
