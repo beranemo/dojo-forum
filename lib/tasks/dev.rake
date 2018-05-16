@@ -22,7 +22,7 @@ namespace :dev do
     Post.destroy_all
     30.times do |i|
       Post.create!(
-        title: "這是標題",
+        title: "這是標題#{i+1}",
         content: FFaker::Lorem.sentence,
         user_id: User.all.sample.id,
         status: "craft",
@@ -45,5 +45,6 @@ namespace :dev do
   end
   
   task rebuild: ["db:drop", "db:create", "db:migrate", "db:seed", :fake_users_admin, :fake_users_normal, :fake_posts]
-  
+  task rebuild2: ["db:migrate", "db:seed", :fake_users_admin, :fake_users_normal, :fake_posts]
+
 end

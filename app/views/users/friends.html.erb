@@ -10,7 +10,8 @@
 
       <ul>
         <% @wanted_friends.each do |girl| %>
-          <li><%= girl.name %></li>
+          <li><%= girl.name %>&nbsp;<%= link_to '取消好友邀請', friendship_path(girl), method: :delete, class: "btn btn-danger btn-xs" %>
+          </li>
         <% end %>
       </ul>
     </div>
@@ -26,7 +27,7 @@
             <% if not current_user == boy %>
  
               <% if current_user.want_to_you?(boy) %>
-                &nbsp;<%= link_to '取消好友邀請', friendship_path(boy), method: :delete, class: "btn btn-danger btn-xs" %>
+                &nbsp;<%= link_to '拒絕好友邀請', reject_friendship_path(boy), method: :delete, class: "btn btn-danger btn-xs" %>
                 <%= link_to '接受好友邀請', friendships_path(friend_id: boy), method: :post,class: "btn btn-warning btn-xs" %>
               <% end %>
 
@@ -42,7 +43,9 @@
 
       <ul>
         <% @befrinds.each do |friend| %>
-          <li><%= friend.name %></li>
+          <li>
+          <%= friend.name %>&nbsp;<%= link_to '解除好友關係', friendship_path(friend), method: :delete, class: "btn btn-danger btn-xs" %>
+          </li>
         <% end %>
       </ul>
     </div>  

@@ -35,7 +35,11 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :friendships, only: [:create, :destroy]
+  resources :friendships, only: [:create, :destroy] do
+    member do
+      delete :reject
+    end
+  end
   
   resources :categories, only: [:show]
   
