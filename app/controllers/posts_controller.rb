@@ -53,7 +53,11 @@ class PostsController < ApplicationController
   end
   
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by(id: params[:id])
+    if @post == nil
+      redirect_to root_path
+      return
+    end
     
     if @post.status == "draft" && @post.user != current_user
       flash[:alert] = "您無此權限做此操作"
@@ -68,7 +72,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)  # 導回上一頁
   end
 
   def edit

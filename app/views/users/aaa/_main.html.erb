@@ -22,8 +22,8 @@
             <td><%= post.created_at.to_s[0..15] %></td>
             <td class="btn-control-group">
               <% if current_user == @user %>
-                <%= link_to '<i class = "glyphicon glyphicon-pencil" aria-hidden="true"></i>'.html_safe, edit_post_path(post) %>
-                <%= link_to '<i class = "glyphicon glyphicon-remove text-danger" aria-hidden="true"></i>'.html_safe, post_path(post), method: :delete, data: { confirm:"Are you sure" } %>
+                <%= link_to "編輯", edit_post_path(post) %> ｜ 
+                <%= link_to "刪除", post_path(post), method: :delete, data: { confirm:"確定刪除此篇文章" } %>
               <% end %>
             </td>
           </tr>
