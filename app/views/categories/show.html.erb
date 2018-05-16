@@ -7,9 +7,9 @@
           排序方式 > 
         </button>
         <div class="dropdown-menu">
-          <div><%= link_to "文章編號", root_path, class: 'dropdown-item' %></div>
-          <div><%= link_to "最後回覆時間", posts_path(tag: 'last_comment_time'), class: 'dropdown-item' %></div>
-          <div><%= link_to "回覆總數", posts_path(tag: 'comments_count'), class: 'dropdown-item' %></div>
+          <div><%= link_to "文章編號", category_path(id: @category.id), class: 'dropdown-item' %></div>
+          <div><%= link_to "最後回覆時間", category_path(id: @category.id, tag: 'last_comment_time'), class: 'dropdown-item' %></div>
+          <div><%= link_to "回覆總數", category_path(id: @category.id, tag: 'comments_count'), class: 'dropdown-item' %></div>
         </div>
       </div>
       <%= "文章編號" if @order_tag == nil %>
@@ -19,8 +19,6 @@
     </div>
   </div>
 </div>
-
-
 
 <div class="container">
   <div class="row">
