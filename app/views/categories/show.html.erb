@@ -1,6 +1,30 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
+      
+      <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          排序方式 > 
+        </button>
+        <div class="dropdown-menu">
+          <div><%= link_to "文章編號", root_path, class: 'dropdown-item' %></div>
+          <div><%= link_to "最後回覆時間", posts_path(tag: 'last_comment_time'), class: 'dropdown-item' %></div>
+          <div><%= link_to "回覆總數", posts_path(tag: 'comments_count'), class: 'dropdown-item' %></div>
+        </div>
+      </div>
+      <%= "文章編號" if @order_tag == nil %>
+      <%= "最後回覆時間" if @order_tag == "last_comment_time" %>
+      <%= "回覆總數" if @order_tag == "comments_count" %>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
       <ul class="tab-primary">
         <li  role="presentation"><%= link_to "全部文章", root_path %></li>
         <% @categories.each do |category| %>
