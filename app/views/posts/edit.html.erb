@@ -1,6 +1,13 @@
 <div class="container">
   <div class="row">
-    <h1>編輯文章</h1>
+    <h1>編輯文章</h1> 
+    <h4>文章狀態:
+    <% if @post.status == "draft" %>
+      草稿
+    <% else %>
+      已發佈
+    <% end %>
+    </h4>
     <% if @post.errors.any? %>
       <h3>喔喔，有出錯喔！請檢查看看</h3>
       <ul>
@@ -50,7 +57,12 @@
       </div>
       
       <%= f.submit "草稿儲存", class: "btn btn-primary" %>
-      <%= f.submit "發佈", class: "btn btn-primary" %>
+      <% if @post.status == "draft" %>
+        <%= f.submit "發佈", class: "btn btn-primary" %>
+      <% else %>
+        <%= f.submit "重新發佈", class: "btn btn-primary" %>
+      <% end %>
+      
       <%= f.submit "復原", type: :reset, class: "btn btn-default" %>
     <% end %>
   <div class="row">

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.where(status: "craft")
   end
 
   def edit
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   
   def posts
     @user = User.find(params[:id])
-    @posts = @user.posts
+    @posts = @user.posts.where(status: "craft")
   end
 
   def comments
