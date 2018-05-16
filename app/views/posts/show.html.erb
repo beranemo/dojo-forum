@@ -38,21 +38,7 @@
   <% end %>
   <% @comments.each do |comment| %> 
     <div>
-      <h4>#<%= i %> <%= comment.user.name %></h4>
-       
-      <% if not current_user == comment.user %>
- 
-        <% if current_user.friend?(comment.user) %>
-         
-        <% elsif current_user.request_friend?(comment.user) %>
-          <%= link_to '取消好友邀請', friendship_path(comment.user), method: :delete, class: "btn btn-link" %>
-        <% elsif current_user.want_to_you?(comment.user) %>
-          <%= link_to '接受好友邀請', friendships_path(friend_id: comment.user), method: :post,class: "btn btn-primary" %>
-        <% else %>
-          <%= link_to '送出好友邀請', friendships_path(friend_id: comment.user), method: :post,class: "btn btn-primary" %>
-        <% end %>
-        
-      <% end %>
+      <h4>#<%= i %> <%= comment.user.name %> <span><%= render "aaa/btn_friend", x: comment.user %></span></h4>
         
       <p><%= simple_format comment.content %></p>
       <p class="text-muted">
